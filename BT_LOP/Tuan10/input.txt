@@ -1,0 +1,6 @@
+
+Ho ten,He so luong,Tham nien
+Nguyen Van A,2.5,5
+Tran Thi B,3.2,2
+Le Van C,1.8,10
+Tran Van D,7.2,8
