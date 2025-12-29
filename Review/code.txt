@@ -1,0 +1,1299 @@
+Chuong 2:
+ In n năm nhuận tiếp theo sau năm nhuận gần nhất là 2016. Năm nhuận là năm thỏa mãn a) hoặc b)
+
+n=int(input())
+year= 2017
+cnt=0
+res=[]
+while cnt<n:
+    if year%4==0 and year%100!=0 or year%400==0:
+        res.append(year)
+        cnt=cnt+1
+    year=year+1
+
+print(*res)
+
+a,b= map(int,input().split())
+if a==0:
+    if b>0:
+        print("VSN")
+    else:
+        print("VN")
+else:
+    p = -b/a
+    if a > 0 :
+        print("x>{:.2f}".format(p))
+    else:
+        print("x<{:.2f}".format(p))
+
+a,b= map(int,input().split())
+x=min(a,b)
+y=max(a,b)
+total =0
+cnt=0
+for i in range(x,y+1):
+    if i%2!=0:
+        total += i
+        cnt+=1
+
+print(cnt,total)
+
+Hai số a và b gọi là một cặp số thân thiết
+def closeNumber(a):
+    total = 0
+    for i in range(1,a):
+        if a%i==0:
+            if i == a:
+                total = 0
+            total+=i
+    return total
+
+a,b = map(int,input().split())
+
+if a == closeNumber(b) and b==closeNumber(a):
+    print("true")
+else:
+    print("false")
+
+def fibo(n):
+    a,b=0,1
+    for i in range(n):
+        print(a,end=' ')
+        a,b=b,a+b
+    print()
+n = int(input())
+fibo(n)
+
+def cnt_even(n):
+    cntOld=0
+    cntEven=0
+    while n>0:
+        digit=n%10
+        if digit%2==0:
+            cntEven+=1
+        else:
+            cntOld+=1
+        n=n//10
+    return cntEven , cntOld
+n=int(input())
+even, old=cnt_even(n)
+print(old,even)
+
+Viết chương trình giải hệ phương trình bậc nhất 2 ẩn
+a1, b1, c1 = map(float, input().split())
+a2, b2, c2 = map(float, input().split())
+
+D  = a1*b2 - a2*b1
+Dx = c1*b2 - c2*b1
+Dy = a1*c2 - a2*c1
+
+if D != 0:
+    x = Dx / D
+    y = Dy / D
+    print("{:.5f} {:.5f}".format(x, y))
+elif Dx == 0 and Dy == 0:
+    print("VSN")
+else:
+    print("VN")
+
+Một số được gọi là số Armstrong 
+n=(input())
+k=len(n)
+s =sum(int(d)**k for d in n)
+if  s==int(n):
+    print(1)
+else:
+    print(0)
+
+Viết chương trình giải phương trình bậc 2 ax2+bx+c =0.
+import math
+
+
+def ptb1(a,b):
+    if a==0:
+        if b==0:
+            print("VSN")
+        else:
+            print("VN")
+    else:
+        print("{:.3f}".format(-b/a))
+
+def ptb2(a,b,c):
+    x1=0
+    x2=0
+    if a==0:
+        ptb1(b,c)
+    else:
+        delta= b*b - 4*a*c
+        if delta<0:
+            print("VN")
+        elif delta==0:
+            x1=x2=-b/2*a
+            print("{:.2f}".format(x1))
+        else:
+            x1=(-b+math.sqrt(delta))/(2*a)
+            x2=(-b-math.sqrt(delta))/(2*a)
+            res1=min(x1,x2)
+            res2=max(x1,x2)
+            print("{:.3f} {:.3f}".format(res1,res2))
+
+a,b,c=map(float,input().split())
+ptb2(a,b,c)
+
+Chuong 3
+Bạn hãy viết hàm:
+1) Đếm số chữ số của một số nguyên dương n.
+2) TÍnh tổng các chữ số của số nguyên dương n.
+def cnt_sum(n):
+    sum=0
+    cnt=0
+    while n>0:
+        digit=n%10
+        sum+=digit
+        cnt+=1
+        n=n//10
+    return cnt, sum
+
+n=int(input(""))
+if n<0:
+    print("Du lieu sai.")
+else:
+    cnt, sum=cnt_sum(n)
+    print(cnt, sum)
+
+
+import  math
+def prime(n):
+    if n < 2:
+        return 0
+    for i in range(2, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            return 0
+    return 1
+
+n=int(input())
+cnt=0
+for i in range(1,n+1):
+    if prime(i):
+        cnt=cnt+1
+print(cnt)
+
+import  math
+def prime(n):
+    if n < 2:
+        return 0
+    for i in range(2, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            return 0
+    return 1
+K=int(input())
+for i in range(K-1,1,-1):
+     if prime(i):
+         print(i)
+         break
+
+def thang_hang(x1, y1, x2, y2, x3, y3):
+    return abs((x2 - x1)*(y3 - y1) - (x3 - x1)*(y2 - y1)) < 1e-9
+
+
+x1, y1 = map(float, input().split())
+x2, y2 = map(float, input().split())
+x3, y3 = map(float, input().split())
+x4, y4 = map(float, input().split())
+x5, y5 = map(float, input().split())
+x6, y6 = map(float, input().split())
+
+res1 = "YES" if thang_hang(x1, y1, x2, y2, x3, y3) else "NO"
+res2 = "YES" if thang_hang(x4, y4, x5, y5, x6, y6) else "NO"
+
+print(res1, res2)
+
+Viết chương trình tính tổng 1 dãy các số nguyên.
+
+data = list(map(int,input().split()))
+n=data[0]
+s=0
+for i in range(1,n+1):
+    s+=data[i]
+    
+print(s)
+
+Viết hàm tìm chữ số xuất hiện nhiều nhất trong chữ số nguyên dương n.
+def maxFreqInDigit(n):
+    freq=[0]*10
+    for c in n:
+        freq[int(c)]+=1
+    maxFreq=max(freq)
+    for i in range(9,-1,-1):
+        if freq[i]==maxFreq:
+            return i
+n=input()
+print(maxFreqInDigit(n))
+
+Viết hàm đổi một số nguyên ở hệ thập phân (10) sang hệ nhị phân (2). 
+def convertDecimalToBinary(n):
+    if n==0:
+        return "0"
+    lst=[]
+    while n>0:
+        lst.append(n % 2)
+        n = n // 2
+    lst.reverse()
+    return ''.join(map(str,lst))
+
+s=input()
+arr=list(map(int,s.split(',')))
+# arr = list(map(int, input().split(',')))
+# res=[convertDecimalToBinary(i) for i in arr]
+# print(','.join(res))
+print(','.join(convertDecimalToBinary(i) for i in arr))
+
+Viết chương trình (có sử dụng hàm ở trên) in ra M số Fibonaci đầu tiên.
+def fibo(n):
+    if n==1:
+        return 1
+    if n==2:
+        return 1
+    else:
+        return fibo(n-1)+fibo(n-2)
+n=int(input())
+for i in range(1,n+1):
+    print(fibo(i),end=' ')
+Kiểm tra các chữ số của một số nguyên dương n có toàn là số chẵn không.
+def check(n):
+    if n<0:
+        return "Error"
+    else:
+        while n>0:
+            digit=n%10
+            if digit%2!=0:
+                return "No"
+            n=n//10
+        return "Yes"
+a, b, c = map(int, input().split())
+print(check(a), check(b), check(c))
+Viết hàm kiểm tra một số nguyên có là số hoàn hảo hay không?
+
+def so_hoan_hao(n):
+    if n<=1:
+        return 0
+    total =1
+    i=2
+    while i*i<=n:
+        if n%i==0:
+            total+=i
+            if i!=n//i:
+                total+=n//i
+        if total >n:
+            return 0
+        i+=1
+    return total==n
+a,b=map(int ,input().split())
+res = []
+if a<=b:
+    for i in range(a,b+1):
+        if so_hoan_hao(i):
+            res.append(i)
+else:
+    for i in range(a,b-1,-1):
+        if so_hoan_hao(i):
+            res.append(i)
+
+if not res:
+    print("Khong co")
+else:
+    print(*res)
+Kiểm tra các chữ số của một số nguyên dương n có các chữ số tăng dần từ trái qua phải không?.
+def digitIncreaseLeftToRight(n):
+    if n<0:
+        return "Error"
+    s=str(n)
+    for i in range(len(s)-1):
+        if s[i] > s[i+1]:
+            return "No"
+    return "Yes"
+x,y,z=map(int,input().split())
+print(digitIncreaseLeftToRight(x),digitIncreaseLeftToRight(y),digitIncreaseLeftToRight(z),end=" ")
+
+khi cắt đôi số đó theo chiều ngang và lấy nửa phía trên thì ta vẫn có một số nguyên
+def catDoi(s):
+    res = ""
+    for ch in s:
+        if ch in "089":
+            res+="0"
+        elif ch == "1":
+            res+="1"
+        else:
+            return "INVALID"
+    res = res.lstrip('0')
+    if res =="":
+        return "INVALID"
+    return res
+
+t = int(input())
+for _ in range(t):
+    print(catDoi(input().strip()))
+
+Viết hàm đếm số chính phương trong đoạn [a, b]
+import math
+def soChinhPhuong(n):
+    res=int(math.sqrt(n))
+    if res*res==n:
+        return 1
+    return 0
+
+a,b=map(int,input().split())
+cnt=0
+for i in range(a,b+1):
+    if soChinhPhuong(i):
+        cnt+=1
+print(cnt)
+
+Một số được coi là đẹp nếu nó là số nguyên tố và tổng các chữ số của nó là một số trong dãy Fibonaci. 
+def snt(n):
+    if n<2:
+        return 0
+    for i in range(2,int(n**0.5)+1):
+        if n%i==0:
+            return 0
+    return 1
+
+def fibo(n):
+    a,b=0,1
+    while b<n:
+        a,b=b,a+b
+    return b==n or n==0
+
+def soDep(n):
+    if not snt(n):
+        return 0
+    total=0
+    while n>0:
+        total+=n%10
+        n//=10
+    return fibo(total)
+
+a,b=map(int,input().split())
+res=[]
+for i in range(a,b+1):
+    if soDep(i):
+        res.append(i)
+if not res:
+    print("-1")
+else:
+    print(*res)
+
+Viết chương trình yêu cầu nhập vào một số nguyên dương n. Chương trình cần thực hiện các công việc sau:
+def snt(n):
+    if n<2:
+        return 0
+    for i in range(2,int(n**0.5)+1):
+        if n%i==0:
+            return 0
+    return 1
+
+def SoDoiXung(n):
+    temp=n
+    total=0
+    while n>0:
+        total = total*10+ n%10
+        n//=10
+    # print(total)
+    return temp==total
+
+n=int(input())
+if snt(n):
+    print("Yes")
+else:
+    print("No")
+if SoDoiXung(n):
+    print("Yes")
+else:
+    print("No")
+Tìm chữ số lớn nhất của một số nguyên dương N.
+def maxInDigit(n):
+    if n<0:
+        return "Error"
+    res = -1e9
+    while n>0:
+        if res < n%10:
+            res = n%10
+        n//=10
+    return res
+
+x,y,z=map(int,input().split())
+print(maxInDigit(x),maxInDigit(y),maxInDigit(z),end=' ')
+ucln
+import math
+
+x,y,z= map(int,input().split())
+if x<=0 or y<=0 or z<=0:
+    print("Dữ liệu sai")
+else:
+    print(math.gcd(x,math.gcd(y,z)))
+hv So
+def ve_hinh_vuong(n):
+    for i in range(n):
+        for j in range(n):
+            print(i + j + 1, end=" ")
+        print()
+
+t = int(input())
+
+for test in range(t):
+    n = int(input())
+    ve_hinh_vuong(n)
+    if test != t - 1:
+        print()
+
+Viết hàm để kiểm tra xem số nguyên dương có phải là số thuận nghịch 
+def soThuanNghich(n):
+    temp=n
+    total=0
+    while n>0:
+        total = total*10 + n%10
+        n//=10
+    return temp==total
+n=int(input())
+if soThuanNghich(n):
+    print("Số thuận nghịch")
+else:
+    print("Không phải số thuận nghịch")
+
+def draw(n):
+    for i in range(1,n+1):
+        print(" "*(n-i)+ "* "*i)
+    print()
+n=int(input())
+draw(n)
+
+def ve_hinh_vuong_rong(h):
+    n=abs(h)
+    print("*"*n)
+    for _ in range(n-2):
+        print("*"+" "*(n-2)+"*")
+    if n>1:
+        print("*"*n)
+        
+x, y, z = map(int, input().split())
+print(x,end="\n")
+ve_hinh_vuong_rong(x)
+print(y,end="\n")    
+ve_hinh_vuong_rong(y)
+print(z,end="\n") 
+ve_hinh_vuong_rong(z)
+
+def ve_tam_giac_can(h):
+    n=abs(h)
+    if h>0:
+        for i in range(1,n+1):
+            print(" "*(n-i)+"*"*(2*i-1))
+    else:
+        for i in range(n,0,-1):
+            print(" "*(n-i)+"*"*(2*i-1))
+
+x, y, z = map(int, input().split())
+print(x,end="\n")
+ve_tam_giac_can(x)
+print(y,end="\n")    
+ve_tam_giac_can(y)
+print(z,end="\n") 
+ve_tam_giac_can(z)
+
+ Viết hàm kiểm tra xem một chuỗi có phải là palindrome hay không
+def palindrome(s):
+    fil = ""
+    for ch in s:
+        if ch.isalnum():
+            fil+=ch.lower()
+    return fil==fil[::-1]
+s=input().strip()
+print(palindrome(s))
+
+def tinh_trung_binh(danh_sach_str):
+    nums=list(map(float,danh_sach_str.split()))
+    return sum(nums)/len(nums)
+
+
+s = input().strip()
+print(tinh_trung_binh(s))
+
+
+Viết hàm tìm kiếm phần tử n (nguyên) trong một danh sách
+def tim_phan_tu(a, lst):
+    for i in range(len(lst)):
+        if lst[i]==a:
+            return i
+    return 0
+    
+a=int(input())
+lst=list(map(int,input().strip("[]").split(", ")))
+print(tim_phan_tu(a, lst))
+
+
+Viết hàm sắp xếp một danh sách các số tăng dần.
+
+lst=list(map(int,input().split(", ")))
+lst.sort()
+print(", ".join(map(str,lst)))
+Viết hàm chuyển đổi một danh sách các số thành một chuỗi các số, cách nhau bởi dấu phẩy
+
+def convertListToString(s):
+    nums=list(map(int,s.split(",")))
+    return ", ".join(map(str,nums))
+
+s=input().strip()
+print(convertListToString(s))
+
+
+Chuong 4:
+danh sach
+
+Viết hàm nhận đầu vào là một mảng các số thực có n phần tử và trả về vị trí của số dương đầu tiên tìm được. Nếu mảng không có số dương thì hàm trả về -1.
+def tim_so_duong_dau_tien(a):
+    for i in range(len(a)):
+        if a[i] > 0:
+            return i, a[i]
+    return -1, 0
+
+n = int(input())
+X = list(map(float, input().split()))
+
+m = int(input())
+Y = list(map(float, input().split()))
+
+pos, val = tim_so_duong_dau_tien(X)
+if pos == -1:
+    print("Khong co so duong trong mang.")
+else:
+    print("{} {:.3f}".format(pos, val))
+
+pos, val = tim_so_duong_dau_tien(Y)
+if pos == -1:
+    print("Khong co so duong trong mang.")
+else:
+    print("{} {:.3f}".format(pos, val))
+
+day tang
+def la_day_tang(a, n):
+    for i in range(1, n):
+        if a[i] <= a[i - 1]:
+            return 0
+    return 1
+
+n = int(input())
+a = list(map(float, input().split()))
+
+
+m = int(input())
+b = list(map(float, input().split()))
+
+if la_day_tang(a, n) == 1:
+    print("TANG")
+else:
+    print("KHONG_TANG")
+
+if la_day_tang(b, m) == 1:
+    print("TANG")
+else:
+    print("KHONG_TANG")
+
+
+ai aj K
+
+n,k= map(int, input().split())
+a=list(map(int, input().split()))
+fre=[0]*501
+cnt=0
+for i in range(n):
+    res = k - a[i]*a[i]
+    if 1 <= res <= 500:
+        cnt+=fre[res]
+    if a[i] + a[i]*a[i] == k:
+        cnt+=1
+    fre[a[i]]+=1
+print(cnt)
+
+Một dãy số tự nhiên được gọi là "đẹp
+n = int(input())
+a = list(map(int, input().split()))
+
+tong = 0
+dep = True
+
+for x in a:
+    if x <= tong:
+        dep = False
+        break
+    tong += x
+
+if dep:
+    print("YES")
+else:
+    print("NO")
+
+Hãy ghép các số đó lại với nhau để được số nguyên dương lớn nhất.
+from functools import cmp_to_key
+
+def compare(x, y):
+    if x + y > y + x:
+        return -1  
+    elif x + y < y + x:
+        return 1   
+    else:
+        return 0
+
+
+n = int(input())
+arr = input().split()
+
+
+arr.sort(key=cmp_to_key(compare))
+
+
+result = ''.join(arr)
+
+print(result)
+
+
+
+nhan vien
+n=int(input())
+lst =[]
+for _ in range(n):
+    info = input().split()
+    ten = info[0]
+    ma= info[1]
+    hsl = float(info[2])
+    pc = int(info[3])
+    luong = hsl * 2000000 + pc
+    lst.append(( ma,ten, hsl, pc, luong))
+lst.sort(key=lambda x: x[4],reverse=True)
+print("Danh sach nhan vien da sap xep: {}".format(n))
+for staff in lst:
+    print("{} {} {:.2f} {} {:.2f}".format(staff[0], staff[1], staff[2], staff[3], staff[4]))
+nhan vien luong thap nhat
+n = int(input())
+
+min_salary = None
+res = None
+
+for i in range(n):
+    a = input().split()
+    code = int(a[0])
+    name = a[1]
+    hsl = float(a[2])
+    pc = int(a[3])
+
+    salary = hsl * 2000000 + pc
+
+    if min_salary is None or salary < min_salary:
+        min_salary = salary
+        res = (code, name, hsl, pc, salary)
+
+print("Nhan vien co luong thap nhat")
+print(str(res[0]) + " " + res[1] + " " + format(res[2], ".2f") + " " + str(res[3]) + " " + format(res[4], ".2f"))
+nhan vien luong lon nhat
+n = int(input())
+
+max_salary = None
+res = None
+
+for i in range(n):
+    a = input().split()
+    name = a[0]
+    code = int(a[1])
+    hsl = float(a[2])
+    pc = int(a[3])
+
+    salary = hsl * 2000000 + pc
+
+    if max_salary is None or salary > max_salary:
+        max_salary = salary
+        res = (code, name, hsl, pc, salary)
+
+print("Nhan vien co luong lon nhat")
+print(str(res[0]) + " " + res[1] + " " + format(res[2], ".2f") + " " + str(res[3]) + " " + format(res[4], ".2f"))
+
+cong ty dien
+n = int(input())
+
+found = False
+max_money = -1
+res = None
+
+for i in range(n):
+    a = input().split()
+    name = a[0]
+    code = a[1]
+    start = int(a[2])
+    end = int(a[3])
+
+    consume = end - start
+
+    if code[0] == 'K':
+        price = 1070
+        money = consume * price
+
+        if not found or money > max_money:
+            found = True
+            max_money = money
+            res = (name, code, start, end, consume, money)
+
+if not found:
+    print("Khong co khach hang la ho kinh doanh.")
+else:
+    print(str(res[0]) + " " + str(res[1]) + " " + str(res[2]) + " " + str(res[3]) + " " + str(res[4]) + " " + str(res[5]))
+
+Khach hang phai tra tien nhieu nhat
+n = int(input())
+
+max_tien = -1
+kh_max = None
+vi_tri = -1
+
+for i in range(n):
+    a = input().split()
+    ten = a[0]
+    ma = a[1]
+    dau = int(a[2])
+    cuoi = int(a[3])
+
+    tieu_thu = cuoi - dau
+    tien = 0
+
+    if tieu_thu <= 100:
+        tien = tieu_thu * 1000
+    elif tieu_thu <= 200:
+        tien = 100 * 1000 + (tieu_thu - 100) * 1500
+    else:
+        tien = 100 * 1000 + 100 * 1500 + (tieu_thu - 200) * 2000
+
+    if tien > max_tien:
+        max_tien = tien
+        kh_max = (ma, ten, dau, cuoi, tieu_thu, tien)
+        vi_tri = i
+
+print("Khach hang phai tra tien nhieu nhat: " + str(vi_tri))
+print(kh_max[0] + " " + kh_max[1] + " " +
+      str(kh_max[2]) + " " + str(kh_max[3]) + " " +
+      str(kh_max[4]) + " " + str(kh_max[5]))
+
+In ra mã khách hàng, tên, chỉ số đầu kỳ, chỉ số cuối kỳ, lượng điện tiêu thụ, số tiền phải trả tìm được hoặc thông báo "Khong co khach hang la doanh nghiep."
+
+n = int(input())
+
+found = False
+max_money = -1
+res = None
+
+for i in range(n):
+    a = input().split()
+    name = a[0]
+    code = a[1]
+    start = int(a[2])
+    end = int(a[3])
+
+    consume = end - start
+
+    if code[0] == 'D':
+        price = 1050
+        money = consume * price
+
+        if not found or money > max_money:
+            found = True
+            max_money = money
+            res = (code, name, start, end, consume, money)
+
+if not found:
+    print("Khong co khach hang la doanh nghiep.")
+else:
+    print(str(res[0]) + " " + str(res[1]) + " " + str(res[2]) + " " + str(res[3]) + " " + str(res[4]) + " " + str(res[5]))
+sinh vien
+thu khoa
+n = int(input())
+
+max_tong = -1
+thu_khoa = None
+vi_tri = -1
+
+for i in range(n):
+    a = input().split()
+    ten = a[0]
+    sbd = int(a[1])
+    d1 = float(a[2])
+    d2 = float(a[3])
+    d3 = float(a[4])
+
+    tong = d1 + d2 + d3
+
+    if tong >= 15.0 and d1 >= 1.0 and d2 >= 1.0 and d3 >= 1.0:
+        if tong > max_tong:
+            max_tong = tong
+            thu_khoa = (sbd, ten, d1, d2, d3, tong)
+            vi_tri = i
+
+if thu_khoa is None:
+    print("Khong co thi sinh thi do")
+else:
+    print("So thu tu cua thu khoa: " + str(vi_tri))
+    print(str(thu_khoa[0]) + " " + thu_khoa[1] + " " +
+          "{:.2f}".format(thu_khoa[2]) + " " +
+          "{:.2f}".format(thu_khoa[3]) + " " +
+          "{:.2f}".format(thu_khoa[4]) + " " +
+          "{:.2f}".format(thu_khoa[5]))
+
+sinh vien hoc lai
+n = int(input())
+
+ds = []
+dem = 0
+
+for _ in range(n):
+    a = input().split()
+    ten = a[0]
+    ma = int(a[1])
+    toan = float(a[2])
+    triet = float(a[3])
+    ltc = float(a[4])
+
+    tb = (toan + triet + ltc) / 3
+
+    hoc_lai = 0
+    if toan < 4.0:
+        hoc_lai += 1
+    if triet < 4.0:
+        hoc_lai += 1
+    if ltc < 4.0:
+        hoc_lai += 1
+
+    if hoc_lai >= 2:
+        ds.append((ma, ten, toan, triet, ltc, tb))
+        dem += 1
+
+print("Danh sach sinh vien hoc lai")
+for sv in ds:
+    print(str(sv[0]) + " " + sv[1] + " " +
+          "{:.2f}".format(sv[2]) + " " +
+          "{:.2f}".format(sv[3]) + " " +
+          "{:.2f}".format(sv[4]) + " " +
+          "{:.2f}".format(sv[5]))
+
+print("Danh sach nay co " + str(dem) + " sinh vien phai hoc lai")
+
+
+hinh tron
+-Danh sach hinh tron da sap xep
+PI = 3.14159
+
+n = int(input())
+
+ma = []
+x = []
+y = []
+r = []
+
+for i in range(n):
+    data = input().split()
+    ma.append(int(data[0]))
+    x.append(int(data[1]))
+    y.append(int(data[2]))
+    r.append(float(data[3]))
+
+for i in range(n - 1):
+    for j in range(i + 1, n):
+        if PI * r[i] * r[i] < PI * r[j] * r[j]:
+            ma[i], ma[j] = ma[j], ma[i]
+            x[i], x[j] = x[j], x[i]
+            y[i], y[j] = y[j], y[i]
+            r[i], r[j] = r[j], r[i]
+
+print("Danh sach hinh tron da sap xep:", n)
+
+for i in range(n):
+    print(ma[i], x[i], y[i], format(r[i], ".3f"))
+
+- diem nam trong
+import math
+
+n = int(input())
+circles = []
+
+for _ in range(n):
+    parts = input().split()
+    cx = int(parts[1])
+    cy = int(parts[2])
+    r = float(parts[3])
+    circles.append((cx, cy, r))
+
+xa, ya, xb, yb = map(int, input().split())
+
+def check_point(px, py, cx, cy, r):
+    d = math.sqrt((px - cx) ** 2 + (py - cy) ** 2)
+    if abs(d - r) < 1e-6:
+        return "tren"
+    elif d < r:
+        return "trong"
+    else:
+        return "ngoai"
+
+for cx, cy, r in circles:
+    resA = check_point(xa, ya, cx, cy, r)
+    print("Diem (" + str(xa) + ", " + str(ya) + ") nam " + resA +
+          " hinh tron tam (" + str(cx) + ", " + str(cy) + ") ban kinh " + format(r, ".3f"))
+    resB = check_point(xb, yb, cx, cy, r)
+    print("Diem (" + str(xb) + ", " + str(yb) + ") nam " + resB +
+          " hinh tron tam (" + str(cx) + ", " + str(cy) + ") ban kinh " + format(r, ".3f"))
+
+Danh sach hinh tron da sap xep
+
+In thông tin của hình tròn có tâm xa gốc tọa độ nhất ra màn hình
+n = int(input())
+
+max_d = -1
+res = None
+
+for i in range(n):
+    a = input().split()
+    code = int(a[0])
+    x = int(a[1])
+    y = int(a[2])
+    r = float(a[3])
+
+    d = x * x + y * y
+
+    if d > max_d:
+        max_d = d
+        res = (code, x, y, r)
+
+print(str(res[0]) + " " + str(res[1]) + " " + str(res[2]) + " " + format(res[3], ".3f"))
+
+
+string
+str = input().strip()
+words= str.split()
+reslut = " ".join(w.capitalize() for w in words)
+print(reslut)
+
+Viết hàm chuẩn hóa một chuỗi sao cho chữ cái đầu chuỗi hoặc sau dấu chấm (.) viết hoa
+import re
+def normalize_string(s):
+    s = s.lower()
+    s = re.sub(r'\s*\.\s*', '. ', s)
+    s = re.sub(r'\s*,\s*', ', ', s)
+    s = '. '.join([i.capitalize() for i in s.split('. ')])
+    return s
+X = input().strip()
+Y = input().strip()
+print(normalize_string(X)) 
+print(normalize_string(Y)) 
+
+
+Viết hàm xóa một ký tự trong chuỗi tại vị trí vt nào đó (tính từ 0).
+def delete_char(word , idx):
+    if idx < 0 or idx > len(word):
+        return word
+    return word[:idx] + word[idx+1:]
+X = input()
+n = int(input())
+Y = input()
+m = int(input())
+
+X_result = delete_char(X, n)
+Y_result = delete_char(Y, m)
+
+
+print(X_result)
+print(Y_result)
+
+MOD = 10**9 + 7
+
+S = input().strip()
+
+result = 1
+current = ""
+
+for ch in S:
+    if ch.isdigit():
+        current += ch
+    else:
+        if current != "":
+            result = (result * int(current)) % MOD
+            current = ""
+
+if current != "":
+    result = (result * int(current)) % MOD
+
+print(result)
+
+n = int(input())
+a = list(map(int, input().split()))
+K = int(input())
+
+candidates = [x for x in a if x <= K]
+
+if not candidates:
+    print("NO")
+else:
+    print(max(candidates))
+
+
+chuyen vi
+n = int(input())
+
+a = []
+for _ in range(n):
+    a.append(list(map(float, input().split())))
+
+
+for i in range(n):
+    for j in range(i + 1, n):
+        a[i][j], a[j][i] = a[j][i], a[i][j]
+print(n)
+for i in range(n):
+    print(" ".join("{:.2f}".format(a[i][j]) for j in range(n)))
+
+matrix
+kiem tra ma tran doi xung
+def la_doi_xung(a, n):
+    for i in range(n):
+        for j in range(i + 1, n):
+            if a[i][j] != a[j][i]:
+                return False
+    return True
+
+
+n1 = int(input())
+a1 = []
+for _ in range(n1):
+    a1.append(list(map(int, input().split())))
+
+n2 = int(input())
+a2 = []
+for _ in range(n2):
+    a2.append(list(map(int, input().split())))
+
+
+if la_doi_xung(a1, n1):
+    print("Ma tran 1: Co doi xung")
+else:
+    print("Ma tran 1: Khong doi xung")
+
+if la_doi_xung(a2, n2):
+    print("Ma tran 2: Co doi xung")
+else:
+    print("Ma tran 2: Khong doi xung")
+Sắp xếp từng hàng của ma trận tăng dần.
+n, m = map(int, input().split())
+
+a = []
+
+
+for _ in range(n):
+    row = list(map(int, input().split()))
+    row.sort()      
+    a.append(row)
+
+
+print(n, m)
+for i in range(n):
+    print(" ".join(str(x) for x in a[i]))
+
+Phan tu lon nhat co chi so hang 
+n, m = map(int, input().split())
+
+max_val = None
+max_i = 0
+max_j = 0
+
+for i in range(n):
+    row = list(map(float, input().split()))
+    for j in range(m):
+        if max_val is None or row[j] > max_val:
+            max_val = row[j]
+            max_i = i
+            max_j = j
+
+print("Phan tu lon nhat co chi so hang %d, chi so cot %d, gia tri %.2f" % (max_i, max_j, max_val))
+
+
+n ra vị trí của phần tử lớn nhất của từng hàng trong ma trận
+n, m = map(int, input().split())
+
+for i in range(n):
+    row = list(map(int, input().split()))
+    max_val = row[0]
+    max_j = 0
+    for j in range(1, m):
+        if row[j] > max_val:
+            max_val = row[j]
+            max_j = j
+    print(i, max_j, max_val)
+
+ In ra vị trí của phần tử nhỏ nhất trong ma trận.
+
+n, m = map(int, input().split())
+
+min_val = None
+min_i = 0
+min_j = 0
+
+for i in range(n):
+    row = list(map(float, input().split()))
+    for j in range(m):
+        if min_val is None or row[j] < min_val:
+            min_val = row[j]
+            min_i = i
+            min_j = j
+
+print(min_i, min_j, format(min_val, ".2f"))
+
+Tìm vị trí và giá trị của phần tử lẻ nhỏ nhất trong mảng.
+
+n = int(input())
+arr = list(map(int, input().split()))
+
+min_odd = None
+pos = -1
+
+for i in range(n):
+    if arr[i] % 2 != 0:
+        if min_odd is None or arr[i] < min_odd:
+            min_odd = arr[i]
+            pos = i
+
+if min_odd is None:
+    print("Khong co so le trong mang")
+else:
+    print("So le nho nhat co vi tri", pos, "gia tri", min_odd)
+
+
+tong ma tran
+def sumtwomatrix(A,B):
+    m=len(A)
+    n=len(A[0])
+    c= []
+    for i in range(m):
+        row= []
+        for j in range(n):
+            row.append(A[i][j] + B[i][j])
+        c.append(row)
+    return c
+
+n1,m1= map(int,input().split())
+A= [list(map(int,input().split())) for i in range(n1)]
+
+n2,m2= map(int,input().split())
+B= [list(map(int,input().split())) for i in range(n2)]
+
+if m1 != m2 or n1 != n2:
+    print("Du lieu vao sai")
+else:
+    C = sumtwomatrix(A, B)
+    print("Ma tran tong")
+    for row in C:
+        print(*row)
+
+
+
+ma tran ky ao
+
+def is_magic_square(matrix):
+    n = len(matrix)
+    target_sum = sum(matrix[0])
+    for row in matrix:
+        if sum(row) != target_sum:
+            return False
+    for col in range(n):
+        if sum(matrix[row][col] for row in range(n)) != target_sum:
+            return False
+    if sum(matrix[i][i] for i in range(n)) != target_sum:
+        return False
+    if sum(matrix[i][n - 1 - i] for i in range(n)) != target_sum:
+        return False
+    return True
+n = int(input())
+matrix_X = [list(map(int, input().split())) for _ in range(n)]
+m = int(input())
+matrix_Y = [list(map(int, input().split())) for _ in range(m)]
+if is_magic_square(matrix_X):
+    print("MAGIC SQUARE")
+else:
+    print("NOT MAGIC")
+
+if is_magic_square(matrix_Y):
+    print("MAGIC SQUARE")
+else:
+    print("NOT MAGIC")
+
+ma tran tich
+def multiply_matrices(X, Y):
+    result = []
+    if len(X[0]) != len(Y):
+        print("Du lieu vao sai")
+        return
+    for i in range(len(X)):
+        row = []
+        for j in range(len(Y[0])):
+            element = 0
+            for k in range(len(Y)):
+                element += X[i][k] * Y[k][j]
+            row.append(element)
+        result.append(row)
+    print("Ma tran tich")
+    for row in result:
+        print(*row)
+n1, m1 = map(int, input().split())
+X = [list(map(int, input().split())) for _ in range(n1)]
+n2, m2 = map(int, input().split())
+Y = [list(map(int, input().split())) for _ in range(n2)]
+multiply_matrices(X, Y)
+
+bitmap
+def print_bitmap(n, m, matrix):
+    for i in range(n):
+        for j in range(m):
+            if matrix[i][j] == 1:
+                print('*', end=' ')
+            else:
+                print(' ', end=' ')
+        print()
+n, m = map(int, input().split())
+matrix = []
+for _ in range(n):
+    row = list(map(int, input().split()))
+    matrix.append(row)
+print_bitmap(n, m, matrix)
+
+
+
+
+n=int(input())
+a=[]
+for i in range(n):
+    row = list(map(int,input().split()))
+    a.append(row)
+
+min_val = -1e9
+for i in range(n):
+    if a[i][i]>min_val:
+        min_val = a[i][i]
+print(min_val)
+
+Nhập vào một bảng số gồm n dòng và n cột. Tính tổng các số
+nằm trên đường chéo chính; tính tổng các số nằm trên đường chéo phụ của bảng
+n_col = int(input())
+n_row = int(input())
+
+n = n_row  
+
+sum_main = 0
+sum_secondary = 0
+
+for i in range(n):
+    row = list(map(int, input().split()))
+    sum_main += row[i]
+    sum_secondary += row[n - 1 - i]
+
+print(sum_main)
+print(sum_secondary)
