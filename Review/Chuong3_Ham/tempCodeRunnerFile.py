@@ -1,13 +1,6 @@
-def palindrome(s):
-    left=0
-    right=len(s)-1
-    while left <right:
-        if s[left] != s[right]:
-            return False
-        left+=1
-        right-=1
-
-    return True
-
-s=input().strip()
-print(palindrome(s))
+def hoanhao(n):
+    total=1
+    i=2
+    while i*i<=n:
+        if n%i==0:
+            total=total+i*i
