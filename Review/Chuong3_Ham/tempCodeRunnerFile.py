@@ -1,11 +1,11 @@
-<<<<<<< HEAD
+
 def hoanhao(n):
     total=1
     i=2
     while i*i<=n:
         if n%i==0:
             total=total+i*i
-=======
+'''
 n=int(input())
 max_money = -1
 idx = -1
@@ -32,4 +32,30 @@ for i in range(n):
         
 print("Khach hang phai tra tien nhieu nhat: {}".format(idx))
 print("{} {} {} {} {} {}".format(*res))
->>>>>>> f1307ffbb4b7119c73f15728c57e73b56cc17a2e
+
+'''
+n=int(input())
+res=[]
+maxVal=-1
+idx=-1
+kq=None
+for i in range(n):
+    a=input().split()
+    ma=int(a[1])
+    ten=a[0]
+    d1 = float(a[2])
+    d2 = float(a[3])
+    d3 = float(a[4])
+    tong = (d1+d2+d3)/3
+    if tong >=15.00 and d1>=1.00 and d2>=1.00 and d3>=1.00 :
+        res.append(ma,ten,d1,d2,d3,tong)
+for i in range (len(res)):
+    if res[i] >maxVal:
+        maxVal=res[i]
+        idx=i
+        kq=(ma,ten,d1,d2,d3,tong)
+print("So thu tu cua thu khoa:",idx)
+print(*kq)
+    
+    
+

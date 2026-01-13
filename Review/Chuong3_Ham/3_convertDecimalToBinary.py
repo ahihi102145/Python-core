@@ -10,7 +10,4 @@ def convertDecimalToBinary(n):
 
 s=input()
 arr=list(map(int,s.split(',')))
-# arr = list(map(int, input().split(',')))
-# res=[convertDecimalToBinary(i) for i in arr]
-# print(','.join(res))
 print(','.join(convertDecimalToBinary(i) for i in arr))
